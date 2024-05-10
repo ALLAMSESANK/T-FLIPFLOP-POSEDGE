@@ -1,11 +1,9 @@
 # T-FLIPFLOP-POSEDGE
 
 **AIM:**
-
 To implement  T flipflop using verilog and validating their functionality using their functional tables
 
 **SOFTWARE REQUIRED:**
-
 Quartus prime
 
 **THEORY**
@@ -27,7 +25,7 @@ Here, Qtt & Qt+1t+1 are present state & next state respectively. So, T flip-flop
 From the above characteristic table, we can directly write the next state equation as Q(t+1)=T′Q(t)+TQ(t)′ ⇒Q(t+1)=T⊕Q(t)
 
 **Procedure**
-```
+/* 
 Step 1: Open Quartus II in your laptop.
 
 Step 2: Write code to implement SR flipflop using verilog and validating their functionality using their functional tables.
@@ -39,26 +37,37 @@ Step 4: Open waveform output and load input values.
 Step 5: Run simulation to get the output.
 
 Step 6: Open in RTL viewers to get RTL diagram output.
-```
+*/
+
 **PROGRAM**
 ```
-module D_FF(D,Clock,reset,Q);
-input D,Clock,reset;
-output reg Q;
-always @ (negedge Clock)
-if(!reset)
-     Q <= 0;
-	else
-      Q <= D;	
- endmodule
- ```
-**RTL LOGIC FOR FLIPFLOPS**
-![image](https://github.com/23007232/D-FLIPDLOP-NEGEDGE/assets/139115574/4efff88f-7cf9-423e-9cde-5d90ef467331)
+/* Program for flipflops and verify its truth table in quartus using Verilog programming.
+Developed by: RIYA P L
+RegisterNumber: 212223240141
 
-**TIMING DIGRAMS FOR FLIP FLOPS**
-![image](https://github.com/23007232/D-FLIPDLOP-NEGEDGE/assets/139115574/e48d9390-50bc-42a5-9a92-da0c5a502179)
+module TFLIPFLOPPOSEDGE( input clk, rst_n, input t,
+output reg q,
+output q_bar
+);
+always@(posedge clk) 
+begin 
+if(!rst_n)
+q<=0;
+else
+if(t)
+q<=~q;
+else
+q<=q;
+end
+assign q_bar = ~q;
+endmodule
+*/
+```
+## RTL LOGIC FOR FLIPFLOPS
+![Screenshot 2024-04-29 210923](https://github.com/23005672/T-FLIPFLOP-POSEDGE/assets/138971519/7cd7893c-0d9f-4c1c-a52a-b11d140addae)
 
+## TIMING DIGRAMS FOR FLIP FLOPS
+![dff1](https://github.com/23005672/T-FLIPFLOP-POSEDGE/assets/138971519/54928eab-f897-40a3-8251-087f8da3a39e)
 
-**RESULTS**
-Thus the D flipflop using verilog and validating their functionality using their functional tables was implemented.
-
+## RESULTS:
+Thus,the T flipflop using verilog and validating their functionality using their functional tables was implemented.
